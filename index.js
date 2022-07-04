@@ -51,5 +51,4 @@
   } else {
     main(jQuery);
   }
-
 })();
