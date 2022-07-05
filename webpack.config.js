@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const MinifyPlugin = require("babel-minify-webpack-plugin");
 
 module.exports = (env, argv) => {
   let URL_API  = 'http://localhost:3000/';
@@ -17,10 +16,6 @@ module.exports = (env, argv) => {
     })
   ];
 
-  if(argv.mode === 'production') {
-    plugins.push(new MinifyPlugin({}, {}));
-  }
-
   const config = {
     entry: path.join(__dirname, '/src/index.js'),
     output: {
@@ -28,6 +23,9 @@ module.exports = (env, argv) => {
       filename: 'shopify-script-tag.js'
     },
     plugins,
+    optimization: {
+      minimize: argv.mode === 'production'
+    },    
     module : {
       rules : [
         {
