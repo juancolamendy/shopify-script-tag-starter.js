@@ -1,8 +1,8 @@
 // Shopify ScriptTag module
 (function(){
   // Load Script function we may need to load scripts, for example, jQuery from the Google's CDN
-  var loadScript = function(url, callback){
-    var script = document.createElement("script");
+  const loadScript = function(url, callback){
+    const script = document.createElement("script");
     script.type = "text/javascript";
 
     // If the browser is Internet Explorer.
@@ -27,15 +27,17 @@
   /* ScriptTag main function 
    * $ in this scope references the jQuery object
   */
-  var main = function($){
+  const main = function($){
     console.log('--- script tag main is running');
-    var body = $('body');
-    var shop = Shopify.shop;
+    const url = URL_API;
+    console.log(`--- url: ${url}`);
+    const body = $('body');
+    const shop = Shopify.shop;
 
     body.prepend('<h1>Add Script here:'+shop+'</h1>');
     body.css({
       'position': 'relative',
-      'background-color': 'red'
+      'background-color': 'blue'
     }) 
   };
 
